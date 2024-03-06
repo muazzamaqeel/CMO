@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QCalendarWidget" name="CalendarBoard1">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>781</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCalendarWidget {
+background-color: white;
+color: black;
+}
+
+QCalendarWidget QAbstractItemView:enabled {
+    selection-background-color: #22344C; /* Color for selected date */
+}
+
+QCalendarWidget QAbstractItemView:disabled {
+    color: #808080; /* Color for disabled dates */
+}
+QCalendarWidget QAbstractItemView:section {
+    background-color: #22344C;
+    color: white; /* Set the text color if needed */
+}
+QCalendarWidget QAbstractItemView {
+    background-color: white; /* Set the background color of the dropdown */
+    color: black; /* Set the text color of the dropdown items */
+    selection-background-color: #D5FEFF; /* Set the background color of the selected item */
+}
+
+
+#qt_calendar_prevmonth {
+    qproperty-icon: url(:/left-arrow.png);
+background-color: white;
+}
+#qt_calendar_nextmonth {
+    qproperty-icon: url(:/right-arrow.png);
+background-color: white;
+}
+QCalendarWidget QHeaderView {
+background-color: #22344C;
+    color: white; /* Set the text color of the day names and week numbers */
+}</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
