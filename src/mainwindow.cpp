@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->CalendarBoard1->setMinimumDate(QDate(1900, 1, 1));
     ui->CalendarBoard1->setMaximumDate(QDate(2100, 1, 1));
 
-    ui->CalendarBoard1->setGridVisible(true);
+    ui->CalendarBoard1->setGridVisible(false);
 
     // Set the window title
     setWindowTitle(tr("CMO Calendar"));

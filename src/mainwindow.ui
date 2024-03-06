@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>947</width>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,14 +19,14 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>781</width>
-      <height>561</height>
+      <width>921</width>
+      <height>621</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QCalendarWidget {
-background-color: white;
-color: black;
+    background-color: white;
+    color: black;
 }
 
 QCalendarWidget QAbstractItemView:enabled {
@@ -36,29 +36,34 @@ QCalendarWidget QAbstractItemView:enabled {
 QCalendarWidget QAbstractItemView:disabled {
     color: #808080; /* Color for disabled dates */
 }
-QCalendarWidget QAbstractItemView:section {
-    background-color: #22344C;
-    color: white; /* Set the text color if needed */
+
+/* Changed the header view background to black and text to white */
+QCalendarWidget QHeaderView {
+    background-color: black;
+    color: white;
 }
+
 QCalendarWidget QAbstractItemView {
     background-color: white; /* Set the background color of the dropdown */
     color: black; /* Set the text color of the dropdown items */
     selection-background-color: #D5FEFF; /* Set the background color of the selected item */
 }
 
-
+/* Updated the navigation buttons background to white */
 #qt_calendar_prevmonth {
     qproperty-icon: url(:/left-arrow.png);
-background-color: white;
+    background-color: white;
 }
 #qt_calendar_nextmonth {
     qproperty-icon: url(:/right-arrow.png);
-background-color: white;
+    background-color: white;
 }
-QCalendarWidget QHeaderView {
-background-color: #22344C;
-    color: white; /* Set the text color of the day names and week numbers */
-}</string>
+
+/* Removed grid lines around the dates in the constructor setGridVisible(false),
+   so no need for additional CSS. 
+   Also, there is no CSS property in Qt to remove lines/borders around the individual dates 
+   if they are a part of the default grid appearance. */
+</string>
     </property>
    </widget>
   </widget>
@@ -67,7 +72,7 @@ background-color: #22344C;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>947</width>
      <height>21</height>
     </rect>
    </property>
