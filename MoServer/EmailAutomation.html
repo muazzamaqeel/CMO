@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Automation</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background-color: #007bff;
+      color: white;
+      border-radius: 10px 10px 0 0;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            <h2>Email Automation</h2>
+          </div>
+          <div class="card-body">
+            <form id="emailForm" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="csvFile">CSV File</label>
+                <input type="file" class="form-control-file" id="csvFile" name="csvFile" accept=".csv" required>
+              </div>
+              <div class="form-group">
+                <label for="emailTemplate">Email Template</label>
+                <input type="file" class="form-control-file" id="emailTemplate" name="emailTemplate" accept=".txt" required>
+              </div>
+              <div class="form-group">
+                <label for="senderEmail">Your Email</label>
+                <input type="email" class="form-control" id="senderEmail" name="senderEmail" required>
+              </div>
+              <div class="form-group">
+                <label for="senderPassword">Your Password</label>
+                <input type="password" class="form-control" id="senderPassword" name="senderPassword" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Send Emails</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('emailForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var formData = new FormData(this);
+
+      fetch('/send_emails', {
+        method: 'POST',
+        body: formData
+      }).then(response => response.json()).then(data => {
+        if (data.success) {
+          alert('Emails sent successfully!');
+        } else {
+          alert('There was an error sending the emails: ' + data.message);
+        }
+      }).catch(error => {
+        console.error('Error:', error);
+        alert('There was an error sending the emails.');
+      });
+    });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
