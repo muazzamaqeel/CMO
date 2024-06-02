@@ -37,6 +37,10 @@
       background-color: #0056b3;
       border-color: #004085;
     }
+
+    #alert-container {
+      margin-top: 20px;
+    }
   </style>
 </head>
 
@@ -49,6 +53,7 @@
             <h2>Email Automation</h2>
           </div>
           <div class="card-body">
+            <div id="alert-container"></div>
             <form id="emailForm" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="csvFile">CSV File</label>
@@ -83,14 +88,20 @@
         method: 'POST',
         body: formData
       }).then(response => response.json()).then(data => {
-        if (data.success) {
-          alert('Emails sent successfully!');
-        } else {
-          alert('There was an error sending the emails: ' + data.message);
-        }
+        var alertContainer = document.getElementById('alert-container');
+        alertContainer.innerHTML = '';
+        var alertDiv = document.createElement('div');
+        alertDiv.className = data.success ? 'alert alert-success' : 'alert alert-danger';
+        alertDiv.textContent = data.message;
+        alertContainer.appendChild(alertDiv);
       }).catch(error => {
         console.error('Error:', error);
-        alert('There was an error sending the emails.');
+        var alertContainer = document.getElementById('alert-container');
+        alertContainer.innerHTML = '';
+        var alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-danger';
+        alertDiv.textContent = 'There was an error sending the emails.';
+        alertContainer.appendChild(alertDiv);
       });
     });
   </script>
