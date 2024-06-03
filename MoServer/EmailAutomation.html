@@ -41,6 +41,24 @@
     #alert-container {
       margin-top: 20px;
     }
+
+    #instructions {
+      display: none;
+    }
+
+    #instructions.show {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 
@@ -74,6 +92,16 @@
               </div>
               <button type="submit" class="btn btn-primary btn-block">Send Emails</button>
             </form>
+            <button id="instructionsButton" class="btn btn-secondary btn-block mt-3">Instructions</button>
+            <div id="instructions" class="mt-3">
+              <h4>Instructions</h4>
+              <h5>Download and use the files below to follow the correct format</h5>
+              <h6>Use Case Explanation:</h6>
+              <br>
+              <p>First Upload the CSV File -> Program takes the Names and Emails from the File -> Takes the Email Template document and uses the template to write the email -> Replaces NAME with the Name of the brands -> Sends the email individually to each of the brands on the list</p>
+              <a href="assets/EmailAutomation_Instructions/sample_contacts.csv" download="sample_contacts.csv" class="btn btn-info">Download Sample Contacts CSV</a>
+              <a href="assets/EmailAutomation_Instructions/sample_template.txt" download="sample_template.txt" class="btn btn-info">Download Sample Email Template</a>
+            </div>
           </div>
         </div>
       </div>
@@ -104,6 +132,11 @@
         alertDiv.textContent = 'There was an error sending the emails.';
         alertContainer.appendChild(alertDiv);
       });
+    });
+
+    document.getElementById('instructionsButton').addEventListener('click', function () {
+      var instructions = document.getElementById('instructions');
+      instructions.classList.toggle('show');
     });
   </script>
 
