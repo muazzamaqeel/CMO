@@ -29,9 +29,16 @@ def send_emails(csv_file_path, template_file_path, sender_email, sender_password
         server.starttls()
         server.login(sender_email, sender_password)
 
+        sent_emails = set()
+
         for index, row in contacts.iterrows():
             recipient_email = row['Email']
             recipient_name = row['Name']
+
+            if recipient_email in sent_emails:
+                logger.info(f"Skipping duplicate email to {recipient_email}")
+                continue
+
             personalized_email = email_template.replace('NAME', recipient_name)
 
             # Create a multipart message and set headers
@@ -50,6 +57,8 @@ def send_emails(csv_file_path, template_file_path, sender_email, sender_password
 
             server.sendmail(sender_email, recipient_email, msg.as_string())
             logger.info(f"Email sent to {recipient_email}")
+
+            sent_emails.add(recipient_email)
 
         server.quit()
         return True, "Emails sent successfully!"

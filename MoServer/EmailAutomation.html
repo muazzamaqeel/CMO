@@ -8,7 +8,7 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f8f9fa;
+      background-color: #3a3838;
     }
 
     .container {
@@ -22,7 +22,7 @@
     }
 
     .card-header {
-      background-color: #007bff;
+      background-color: #343536;
       color: white;
       border-radius: 10px 10px 0 0;
       text-align: center;
@@ -59,17 +59,26 @@
         opacity: 1;
       }
     }
+
+    .btn-back {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 1.25rem;
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
+    <button onclick="window.location.href='index.html'" class="btn btn-secondary btn-back">Back</button>
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="card">
           <div class="card-header">
             <h2>Email Automation</h2>
-            <h5>This functionality allows you to send emails to multiple email-addresses</h5>
+            <h5>This functionality allows you to send emails to multiple email-addresses <br> Only Operates with Outlook Email Addresses from the sender's side</h5>
           </div>
           <div class="card-body">
             <div id="alert-container"></div>
@@ -83,7 +92,7 @@
                 <input type="file" class="form-control-file" id="emailTemplate" name="emailTemplate" accept=".txt" required>
               </div>
               <div class="form-group">
-                <label for="senderEmail">Your Email</label>
+                <label for="senderEmail">Your Email - (Outlook)</label>
                 <input type="email" class="form-control" id="senderEmail" name="senderEmail" required>
               </div>
               <div class="form-group">
